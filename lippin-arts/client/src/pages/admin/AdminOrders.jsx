@@ -35,6 +35,9 @@ function AdminOrders() {
     }
   };
 
+  const formatDate = (dateStr) =>
+    new Date(dateStr).toLocaleString('en-IN', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+
   return (
     <div>
       <h1 className="font-display text-2xl font-semibold mb-6">Orders</h1>
@@ -43,6 +46,7 @@ function AdminOrders() {
           <thead className="bg-ivory/5 text-left text-ivory/60">
             <tr>
               <th className="p-3">Order</th>
+              <th className="p-3">Date</th>
               <th className="p-3">Customer</th>
               <th className="p-3">Total</th>
               <th className="p-3">Status</th>
@@ -53,6 +57,7 @@ function AdminOrders() {
             {orders.map((o) => (
               <tr key={o._id} className="border-t border-ivory/10">
                 <td className="p-3 font-mono text-xs">#{o._id.slice(-8)}</td>
+                <td className="p-3 text-ivory/70 text-xs whitespace-nowrap">{formatDate(o.createdAt)}</td>
                 <td className="p-3">{o.user?.fullName}</td>
                 <td className="p-3">₹{o.total.toFixed(0)}</td>
                 <td className="p-3">
@@ -82,6 +87,8 @@ function AdminOrders() {
               <h2 className="font-display text-lg font-semibold">Order #{selectedOrder._id.slice(-8)}</h2>
               <button onClick={() => { setSelectedOrder(null); setCustomerInfo(null); }} className="text-ivory/50 hover:text-ivory">✕</button>
             </div>
+
+            <p className="text-sm text-ivory/60 mb-4">Placed: {formatDate(selectedOrder.createdAt)}</p>
 
             <h3 className="text-sm font-medium mb-1">Customer</h3>
             {customerInfo ? (
