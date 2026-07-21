@@ -2,7 +2,9 @@ const express = require('express');
 const Order = require('../models/Order');
 const Cart = require('../models/Cart');
 const Product = require('../models/Product');
+const User = require('../models/User');
 const authMiddleware = require('../middleware/auth');
+const { sendOrderConfirmationEmail } = require('../utils/sendEmail');
 
 const router = express.Router();
 
@@ -43,6 +45,15 @@ router.post('/', authMiddleware, async (req, res) => {
 
     cart.items = [];
     await cart.save();
+
+    try {
+      const user = await User.findById(req.userId);
+      if (user?.email) {
+        await sendOrderConfirmationEmail(user.email, order);
+      }
+    } catch (emailErr) {
+      console.error('Order email failed to send:', emailErr.message);
+    }
 
     res.status(201).json(order);
   } catch (err) {

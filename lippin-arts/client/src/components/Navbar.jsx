@@ -12,9 +12,10 @@ function Navbar() {
 
   return (
     <div className="sticky top-0 z-30 bg-ivory/95 backdrop-blur-sm">
-      <nav className="flex flex-wrap items-center justify-between gap-4 px-4 py-5 sm:px-8">
-        <Link to="/" className="font-display text-2xl font-semibold tracking-tight text-indigo">
-          Lippin <span className="text-rust">Arts</span>
+      <nav className="flex flex-wrap items-center justify-between gap-4 px-4 py-4 sm:px-8">
+        <Link to="/" className="flex items-center gap-2.5">
+          <img src="/niharts-logo.jpeg" alt="NiHarts" className="h-11 w-11 rounded-full object-cover" />
+          <span className="font-display text-2xl font-semibold tracking-tight text-indigo">NiHarts</span>
         </Link>
         <div className="flex flex-wrap items-center gap-5 text-sm font-medium sm:gap-8 sm:text-base">
           <Link to="/products" className="relative text-charcoal/80 hover:text-rust transition-colors after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-rust after:transition-all hover:after:w-full">

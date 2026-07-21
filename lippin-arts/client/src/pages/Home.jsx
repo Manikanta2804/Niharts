@@ -19,8 +19,8 @@ function Home() {
           }}
         />
         <div className="relative">
-          <p className="mb-3 text-sm font-medium uppercase tracking-[0.3em] text-rust">Handmade · Since the heart</p>
-          <h1 className="font-display text-5xl font-semibold sm:text-7xl">Lippin Arts</h1>
+          <p className="mb-3 text-sm font-medium uppercase tracking-[0.3em] text-rust">Handmade · Art is Life</p>
+          <h1 className="font-display text-5xl font-semibold sm:text-7xl">NiHarts</h1>
           <p className="mx-auto mt-5 max-w-xl text-base text-ivory/80 sm:text-lg">
             Embroidery hoops, Lippan art, resin keychains, and more — every piece crafted by hand with care.
           </p>
